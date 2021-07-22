@@ -1,0 +1,16 @@
+:root {
+    --color-background: rgb(255, 228, 228);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    
+    body {
+        font: 16px "Poppins", sans-serif;
+        background: var(--color-background);
+        margin: 0 200px;
+    }
+}
