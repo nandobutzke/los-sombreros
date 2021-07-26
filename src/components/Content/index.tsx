@@ -1,5 +1,5 @@
 import { MainContainer } from "./styles";
-import ovomaltineImg from '../../assets/img/ovomaltine.jpg';
+import paletasImg from '../../assets/img/paletas.jpg';
 import { Button } from "../Button";
 
 export function Content() {
@@ -14,9 +14,7 @@ export function Content() {
                 </p>
                 <Button title="Ver Catálogo" />
             </div>
-            <div className="img-content">
-                <img src={ovomaltineImg} alt="" />
-            </div>
+            {/* <img src={paletasImg} alt="Paletas" /> */}
         </MainContainer>
     );
 }

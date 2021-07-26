@@ -1,13 +1,24 @@
 import styled from 'styled-components';
+import paletasImg from '../../assets/img/paletas.jpg';
 
 export const MainContainer = styled.main`
     display: grid;
-    grid-template-columns: repeat(2, 2fr);
+    margin: 5rem auto;
+    background: url(${paletasImg});
+    padding: 5rem;
+    
+    /*img {
+        width: 100%;
+    }*/
     
     .text-content {
         justify-content: center;
+        opacity: 1 !important;
+        margin: 2.5rem 200px;
+
         h2 {
             color: #ff213f;
+            font-size: 5rem;
         }
         
         hr {
@@ -18,9 +29,6 @@ export const MainContainer = styled.main`
             font-size: 24px;
             color: #444;
         }
-    }
-    
-    .img-content {
-        text-align: right;
+
     }
 `;

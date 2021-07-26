@@ -19,6 +19,17 @@ export const SideBarContainer = styled.nav`
         font-size: 2.75rem;
     }
 
+    &.activate {
+        display: none;
+    }
+
+    &.disabled {
+        display: block;
+    }
+
+    #open-sidebar {
+        display: block;
+    }
 `;
 
 export const StyledFaBars = styled(FaBars)`

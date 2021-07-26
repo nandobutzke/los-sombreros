@@ -1,5 +1,6 @@
 import { Content } from "../components/Content";
 import { Header } from "../components/Header";
+import { ProductsGrid } from "../components/ProductsGrid";
 import { SideBar } from "../components/SideBar";
 
 export function Home() {
@@ -8,6 +9,7 @@ export function Home() {
             <SideBar />
             <Header />
             <Content />
+            <ProductsGrid />
         </>
     );
 }
