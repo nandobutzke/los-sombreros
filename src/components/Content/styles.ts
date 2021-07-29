@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import paletasImg from '../../assets/img/paletas.jpg';
+import paletasImg from '../../assets/img/paletas-background.jpg';
 
 export const MainContainer = styled.main`
     display: grid;
-    margin: 5rem auto;
+    margin: auto;
     background: url(${paletasImg});
     padding: 5rem;
     

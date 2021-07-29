@@ -1,10 +1,15 @@
+import { data } from "../../data";
 import { Product } from "../Product";
 import { ProductsContainer } from "./styles";
 
 export function ProductsGrid() {
     return (
         <ProductsContainer>
-            <Product />
+            {data.map(product => { 
+                return(
+                    <Product product={product} />
+                )
+            })}
         </ProductsContainer>
     ); 
 }

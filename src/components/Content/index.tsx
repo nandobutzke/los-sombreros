@@ -1,5 +1,4 @@
 import { MainContainer } from "./styles";
-import paletasImg from '../../assets/img/paletas.jpg';
 import { Button } from "../Button";
 
 export function Content() {
