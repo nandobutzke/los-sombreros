@@ -1,15 +1,20 @@
 import { data } from "../../data";
-import { Product } from "../Product";
-import { ProductsContainer } from "./styles";
+import { Card } from "../Card";
+import { ProductsContainer, TitleProductsdGridContainer } from "./styles";
 
 export function ProductsGrid() {
     return (
-        <ProductsContainer>
-            {data.map(product => { 
-                return(
-                    <Product product={product} />
-                )
-            })}
-        </ProductsContainer>
+        <>
+            <TitleProductsdGridContainer>
+                <h2>Paletas Mexicanas</h2>
+            </TitleProductsdGridContainer>
+            <ProductsContainer>
+                {data.map(product => { 
+                    return(
+                        <Card data={product} />
+                    )
+                })}
+            </ProductsContainer>
+        </>
     ); 
 }

@@ -14,14 +14,12 @@ export const HeaderContainer = styled.header`
     }
 
     .content-menu { 
-        ul {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
-            list-style: none;
-            gap: 20px;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        list-style: none;
+        gap: 2.2rem;
     }
 `;
 

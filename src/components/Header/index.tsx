@@ -1,20 +1,22 @@
 import { HeaderContainer, StyledLink } from "./styles";
 import logoImg from '../../assets/logo-los-sombreros.png';
+import { BackToHomeButton } from "../BackToHomeButton";
+import { useBackToHome } from "../../hooks/useBackToHome";
 
 export function Header() {
+    const { isOtherPage, alterPage } = useBackToHome();
+
     return (
         <>
             <HeaderContainer>
                 <div className="content-img">
-                    <img src={logoImg} alt="Logo" />
+                    { isOtherPage ? <BackToHomeButton /> : <img src={logoImg} alt="Logo" />}
                 </div>
                 <nav className="content-menu">
-                    <ul>
-                        <li><StyledLink to="/">Inicio</StyledLink></li>
-                        <li><StyledLink to="/">Produtos</StyledLink></li>
-                        <li><StyledLink to="/">Sobre</StyledLink></li>
-                        <li><StyledLink to="/">Entre em contato</StyledLink></li>
-                    </ul>
+                    <StyledLink to="/" onClick={() => alterPage(false)}>Inicio</StyledLink>
+                    <StyledLink to="/products" onClick={() => alterPage(true)}>Produtos</StyledLink>
+                    <StyledLink to="/" onClick={() => alterPage(true)}>Sobre</StyledLink>
+                    <StyledLink to="/" onClick={() => alterPage(true)}>Entre em contato</StyledLink>
                 </nav>
             </HeaderContainer>    
         </>

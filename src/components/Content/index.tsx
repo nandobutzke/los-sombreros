@@ -1,19 +1,19 @@
 import { MainContainer } from "./styles";
 import { Button } from "../Button";
+import paletasImg from '../../assets/img/paletas-background.jpg';
 
 export function Content() {
     return (
         <MainContainer>
             <div className="text-content">
-                <h2>AS MELHORES PALETAS MEXICANAS</h2>
+                <h2>As melhores paletas mexicanas!</h2>
                 <hr />
                 <p>
-                    Possuímos uma enorme variedade de paletas no nosso catálogo!
-                    Clique no botão abaixo para saber mais!
+                    Possuímos uma enorme variedade de opções no nosso catálogo!
                 </p>
-                <Button title="Ver Catálogo" />
+                <Button title="Catálogo" />
             </div>
-            {/* <img src={paletasImg} alt="Paletas" /> */}
+            <img src={paletasImg} alt="Paletas" />
         </MainContainer>
     );
 }
