@@ -20,19 +20,15 @@ export const FooterContainer = styled.footer`
     padding: 5rem;
 `;
 
-export const SocialMediaContainer = styled.p`
-    
-`;
+export const SocialMediaContainer = styled.p``;
 
-export const AddressContainer = styled.p`
-    
-`;
+export const AddressContainer = styled.p``;
 
-export const CopyrightContainer = styled.div`
+export const CopyrightContainer = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    color: #444;
     b {
         color: #ff213f;
         margin: auto 0.5rem;
@@ -55,7 +51,7 @@ export const AddressInformationContainer = styled.p`
         color: #ff213f;
         font-size: 1.5rem;
     }
-`
+`;
 
 export const StyledLink = styled(Link)`
     text-decoration: none;

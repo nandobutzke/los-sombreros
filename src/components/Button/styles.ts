@@ -2,8 +2,7 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const ButtonStyled = styled.button`
-    margin: 30px auto;
-    padding: 16px 18px;
+    padding: 12px 12px;
     font: 16px "Poppins", sans-serif;
     border: none;
     background: #ff213f;
