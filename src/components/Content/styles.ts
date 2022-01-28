@@ -5,11 +5,13 @@ export const ContentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    margin: auto 7.5rem;
 
     .text-content {
         display: inline-block;
-        justify-content: left;
-        align-items: left;
+        justify-content: center;
+        align-items: center;
         text-align: left;
         width: 50%;
         opacity: 1 !important;
@@ -42,6 +44,9 @@ export const ContentContainer = styled.div`
         display: flex;
         justify-content: center;
 
+        img {
+            height: 40vh;
+        }
 
     }
 `;

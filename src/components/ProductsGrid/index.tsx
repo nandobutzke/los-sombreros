@@ -6,7 +6,9 @@ export function ProductsGrid() {
     return (
         <>
             <TitleProductsdGridContainer>
+                <hr />
                 <h2>Paletas Mexicanas</h2>
+                <hr />
             </TitleProductsdGridContainer>
             <ProductsContainer>
                 {data.map(product => { 

@@ -10,12 +10,17 @@ export const ProductsContainer = styled.div`
 export const TitleProductsdGridContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     padding-top: 1.5rem;
 
     h2 {
         color: #ff213f;
         font: 2.75rem "Fredoka One", sans-serif;
+    }
+
+    hr {
+        margin: auto;
+        width: 250px;
     }
 `;
