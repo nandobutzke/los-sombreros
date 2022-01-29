@@ -1,10 +1,18 @@
 import { MdAddCircleOutline, MdDelete, MdRemoveCircleOutline } from "react-icons/md";
-import { ProductsGrid } from "../../components/ProductsGrid";
-import { data } from "../../data";
+import { localData } from "../../data";
+import { useCart } from "../../hooks/useCart";
 import { formatPrice } from "../../util/format";
 import { Container, StyledTable, Total } from "./styles";
 
 export function Cart() {
+    const { cart } = useCart();
+
+    function getImageById(localDataItemId: number) {
+        const response = localData.findIndex(localDataItem => localDataItem.id === localDataItemId);
+        
+        return localData[response].image;
+    }
+
     return (
         <Container>
             <StyledTable>
@@ -18,84 +26,47 @@ export function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <img src={data[0].img} alt="" />
-                        </td>
-                        <td>
-                            <strong>{data[0].title}</strong>
-                            <span>{formatPrice(data[0].price)}</span>
-                        </td>
-                        <td>
-                            <div>
-                                <button
-                                    type="button"
-                                    disabled={true}
-                                    onClick={() => {}}
-                                >
-                                    <MdRemoveCircleOutline size={20} />
+                    {cart.map(product => (
+                        <tr>
+                            <td>
+                                <img src={getImageById(product.id)} alt="" />
+                            </td>
+                            <td>
+                                <strong>{product.title}</strong>
+                                <span>{formatPrice(product.price)}</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <button
+                                        type="button"
+                                        disabled={true}
+                                        onClick={() => {}}
+                                    >
+                                        <MdRemoveCircleOutline size={20} />
+                                    </button>
+                                    <input 
+                                        type="text"
+                                        readOnly
+                                        value={product.amount}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => {}}
+                                    >
+                                        <MdAddCircleOutline size={20} />
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <strong>{formatPrice(0)}</strong>
+                            </td>
+                            <td>
+                                <button>
+                                    <MdDelete size={20} />
                                 </button>
-                                <input 
-                                    type="text"
-                                    readOnly
-                                    value={1}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => {}}
-                                >
-                                    <MdAddCircleOutline size={20} />
-                                </button>
-                            </div>
-                        </td>
-                        <td>
-                            <strong>{formatPrice(data[0].price)}</strong>
-                        </td>
-                        <td>
-                            <button>
-                                <MdDelete size={20} />
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src={data[1].img} alt="" />
-                        </td>
-                        <td>
-                            <strong>{data[1].title}</strong>
-                            <span>{formatPrice(data[1].price)}</span>
-                        </td>
-                        <td>
-                            <div>
-                                <button
-                                    type="button"
-                                    disabled={true}
-                                    onClick={() => {}}
-                                >
-                                    <MdRemoveCircleOutline size={20} />
-                                </button>
-                                <input 
-                                    type="text"
-                                    readOnly
-                                    value={1}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => {}}
-                                >
-                                    <MdAddCircleOutline size={20} />
-                                </button>
-                            </div>
-                        </td>
-                        <td>
-                            <strong>{formatPrice(data[1].price)}</strong>
-                        </td>
-                        <td>
-                            <button>
-                                <MdDelete size={20} />
-                            </button>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </StyledTable>
             <footer>
@@ -103,7 +74,7 @@ export function Cart() {
 
                 <Total>
                     <span>TOTAL</span>
-                    <strong>{formatPrice(data[0].price)}</strong>
+                    <strong>{formatPrice(0)}</strong>
                 </Total>
             </footer>
         </Container>

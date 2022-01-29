@@ -64,6 +64,8 @@ export const AddToCartButton = styled.button`
     color: #FFF;
     border-radius: 0.25rem;
 
+    margin-top: auto;
+
     display: flex;
     align-items: center;
     gap: 0.3rem;

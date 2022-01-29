@@ -8,7 +8,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto 20%;
+    margin: 5% 20%;
 
     footer {
         margin-top: 25px;
@@ -42,6 +42,10 @@ export const StyledTable = styled.table`
     thead th {
         padding: 12px;
         text-align: left;
+    }
+
+    tbody td:first-child {
+        text-align: center
     }
 
     tbody td {

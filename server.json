@@ -1,0 +1,33 @@
+{
+    "stock": [
+        {
+            "id": 1,
+            "amount": 3
+        },
+        {
+            "id": 2,
+            "amount": 5
+        },
+        {
+            "id": 3,
+            "amount": 2
+        }
+    ],
+    "products": [
+        {
+          "id": 1,
+          "title": "Paleta de abacaxi",
+          "price": 7.80
+        },
+        {
+          "id": 2,
+          "title": "Paleta de maracujá",
+          "price": 6.50
+        },
+        {
+          "id": 3,
+          "title": "Paleta de melancia",
+          "price": 6.90
+        }
+    ]
+}
