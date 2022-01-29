@@ -6,6 +6,7 @@ export const StyledCartItemLink = styled(Link)`
     text-decoration: none;
     color: #444;
     margin-left: 5rem;
+    gap: 0.5rem;
 
     div {
         display: flex;
@@ -16,6 +17,7 @@ export const StyledCartItemLink = styled(Link)`
         }
     }
 
-    gap: 0.5rem;
-    
+    svg {
+        color: #ff213f;
+    }
 `;

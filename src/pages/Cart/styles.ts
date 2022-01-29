@@ -1,13 +1,56 @@
+import { darken, lighten } from "polished";
 import styled from "styled-components";
+
+export const Container = styled.div`
+    border: 2px solid #ff213f;
+    border-radius: 0.25rem;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 20%;
+
+    footer {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        button {
+            background-color: #ff213f;
+            color: #fff;
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 4px;
+            font-size: 20px;
+            font-weight: bold;
+    
+            transition: background 0.2s;
+    
+            &:hover {
+                background: ${darken(0.12, '#ff213f')};
+            }
+        }
+    }
+
+
+    
+    
+`;
 
 export const StyledTable = styled.table`
     thead th {
         padding: 12px;
+        text-align: left;
     }
 
     tbody td {
         padding: 12px;
         border-bottom: 1px solid #eee;
+    }
+
+    img {
+        height: 100px;
     }
 
     strong {
@@ -22,7 +65,57 @@ export const StyledTable = styled.table`
         font-weight: bold;
     }
 
-    img {
-        height: 100px;
+    div {
+        display: flex;
+        align-items: center;
+
+        input {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #666;
+            padding: 6px;
+            width: 50px;
+        }
+    }
+
+    button {
+        background: none;
+        border: 0;
+        
+        svg {
+            color: #ff213f;
+        }
+
+        &:hover {
+            svg {
+                color: ${darken(0.06, '#ff213f')};
+            }
+        }
+
+        &:disabled {
+            svg {
+                color: ${lighten(0.2, '#ff213f')};
+                cursor: not-allowed;
+            }
+        }
+    }
+
+
+
+    
+`;
+
+export const Total = styled.div`
+    display: flex;
+    align-items: baseline;
+
+    span {
+        color: #999;
+        font-weight: bold;
+    }
+
+    strong {
+        font-size: 28px;
+        margin-left: 5px;
     }
 `;

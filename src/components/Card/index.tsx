@@ -1,17 +1,25 @@
 import { AddToCartButton, ProductContainer } from './styles';
 import { formatPrice } from '../../util/format';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { useState } from 'react';
 
-interface ProductProps { 
+interface ProductProps {
     data: {
         id: string;
         title: string;
         price: number;
         img: string;
+        quantityOrder: number
     }
 }
 
 export function Card({ data }: ProductProps) {
+    const [quantityProduct, setQuantityProduct] = useState(0);
+
+    function handleAddProductAtCart() {
+        setQuantityProduct(quantityProduct + 1);
+    }
+
     return(
         <ProductContainer key={data.id}>
             <div className="card-content">
@@ -21,10 +29,10 @@ export function Card({ data }: ProductProps) {
                     <p>{data.title}</p>
                 </div>
             </div>
-            <AddToCartButton type="button">
+            <AddToCartButton type="button" onClick={() => handleAddProductAtCart()}>
                 <div>
                     <MdAddShoppingCart />
-                    {0}
+                    {quantityProduct}
                 </div>
 
                 <span>ADICIONAR AO CARRINHO</span>
