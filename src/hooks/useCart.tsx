@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { Product } from "../types";
 
-
 interface CartProviderProps {
     children: ReactNode;
 }
@@ -11,6 +10,7 @@ interface CartProviderProps {
 interface CartContextData {
     cart: Product[];
     addProduct: (productId: number) => Promise<void>;
+    removeProduct: (productId: number) => Promise<void>;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -61,7 +61,7 @@ export function CartProvider({ children }: CartProviderProps) {
             if (productExists) {
                 productExists.amount = amount;
             } else {
-                const product = await api.get(`/products/${productId}`)
+                const product = await api.get(`/products/${productId}`);
 
                 const newProduct = {
                     ...product.data,
@@ -71,14 +71,16 @@ export function CartProvider({ children }: CartProviderProps) {
             }
 
             setCart(updatedCart);
-
         } catch {
             toast.error('Erro ao adicionar o produto');
         }
     }
 
-    async function removeProduct() {
+    async function removeProduct(productId: number) {
+        const cartFilter = cart.filter(product => product.id !== productId);
 
+        setCart(cartFilter);
+        localStorage.setItem('@LosSombreros:cart', JSON.stringify(cartFilter));
     }
 
     async function updateProductAmount() {
@@ -86,7 +88,7 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     return (
-        <CartContext.Provider value={{ cart, addProduct }}>
+        <CartContext.Provider value={{ cart, addProduct, removeProduct }}>
             {children}
         </CartContext.Provider>
     );

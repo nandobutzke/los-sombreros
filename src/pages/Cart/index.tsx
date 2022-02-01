@@ -4,14 +4,37 @@ import { useCart } from "../../hooks/useCart";
 import { formatPrice } from "../../util/format";
 import { Container, StyledTable, Total } from "./styles";
 
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    amount: number;
+}
+
 export function Cart() {
-    const { cart } = useCart();
+    const { cart, removeProduct } = useCart();
+
+    const cartFormatted = cart.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+        subTotal: formatPrice(product.price * product.amount)
+    }));
+
+    const total = 
+        formatPrice(
+            cart.reduce((sumTotal, product) => {
+                return sumTotal + product.price * product.amount;
+            }, 0)
+        );
 
     function getImageById(localDataItemId: number) {
         const response = localData.findIndex(localDataItem => localDataItem.id === localDataItemId);
         
         return localData[response].image;
     }
+
+
 
     return (
         <Container>
@@ -26,7 +49,7 @@ export function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cart.map(product => (
+                    {cartFormatted.length > 0 ? cart.map(product => (
                         <tr>
                             <td>
                                 <img src={getImageById(product.id)} alt="" />
@@ -58,15 +81,15 @@ export function Cart() {
                                 </div>
                             </td>
                             <td>
-                                <strong>{formatPrice(0)}</strong>
+                                <strong>{}</strong>
                             </td>
                             <td>
-                                <button>
+                                <button onClick={() => removeProduct(product.id)}>
                                     <MdDelete size={20} />
                                 </button>
                             </td>
                         </tr>
-                    ))}
+                    )) : <span>O carrinho está vazio.</span>}
                 </tbody>
             </StyledTable>
             <footer>

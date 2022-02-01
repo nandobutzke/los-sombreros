@@ -26,4 +26,6 @@ export const HeaderContainer = styled.header`
 export const StyledLink = styled(Link)`
     color: #444;
     text-decoration: none;
+    
+    &:active { color: lime }
 `;
