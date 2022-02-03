@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
     display: flex;
@@ -23,9 +23,25 @@ export const HeaderContainer = styled.header`
     }
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
     color: #444;
     text-decoration: none;
+    display: inline-block;
+    position: relative;
+    //line-height: 5rem;
     
-    &:active { color: lime }
+    &.active { 
+        font-weight: bold;
+    }
+
+    &.active::after {
+        content: '';
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        border-radius: 0 0 3px 3px;
+        bottom: 0;
+        left: 0;
+        background: #ff213f;
+    }
 `;

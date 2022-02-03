@@ -1,8 +1,10 @@
 import { HeaderContainer, StyledLink } from "./styles";
 import logoImg from '../../assets/logo-los-sombreros.png';
 import { CartItem } from "../CartItem";
+import { ActiveLink } from "../ActiveLink";
 
 export function Header() {
+
     return (
         <>
             <HeaderContainer>
@@ -10,8 +12,8 @@ export function Header() {
                     <img src={logoImg} alt="Logo" />
                 </div>
                 <nav className="content-menu">
-                    <StyledLink to="/">Inicio</StyledLink>
-                    <StyledLink to="/products">Produtos</StyledLink>
+                    <ActiveLink to="/">Inicio</ActiveLink>
+                    <ActiveLink to="/products">Produtos</ActiveLink>
                     <CartItem />
                 </nav>
             </HeaderContainer>    
