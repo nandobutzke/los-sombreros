@@ -29,7 +29,7 @@ export function ProductsGrid() {
             <ProductsContainer>
                 {products.map(product => { 
                     return(
-                        <Card data={product} />
+                        <Card {...product} />
                     )
                 })}
             </ProductsContainer>

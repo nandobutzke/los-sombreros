@@ -4,45 +4,46 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import { localData } from "../../data";
 import { useState } from 'react';
 import { useCart } from '../../hooks/useCart';
+import { Product } from '../../types';
+import { toast } from 'react-toastify';
 
-interface ProductProps {
-    data: {
-        id: number;
-        title: string;
-        price: number;
-    };
+interface CarItensAmount {
+    [key: number]: number;
 }
 
-export function Card({ data }: ProductProps) {
-    const { addProduct } = useCart();
-    const [quantityProduct, setQuantityProduct] = useState(0);
+export function Card(product: Product) {
+    const { addProduct, cart } = useCart();
+
+    const cartItensAmount = cart.reduce((sumAmount, product) => {
+        const newSumAmount = {...sumAmount};
+        newSumAmount[product.id] = product.amount;
+
+        return newSumAmount;
+    }, {} as CarItensAmount);
     
     function getImageById(localDataItemId: number) {
-        const response = localData.findIndex(localDataItem => localDataItem.id === data.id);
+        const response = localData.findIndex(localDataItem => localDataItem.id === product.id);
         
         return localData[response].image;
     }
     
-    function handleAddProduct(productId: number) {
-        addProduct(productId)
-        setQuantityProduct(quantityProduct + 1);
+    function handleAddProduct(product: Product) {
+        addProduct(product.id);
     }
 
-    
-
     return(
-        <ProductContainer key={data.id}>
+        <ProductContainer key={product.id}>
             <div className="card-content">
-                <img className={data.id === 3 ? "melanciaImg" : ''} src={getImageById(data.id)} alt={data.title} />
+                <img className={product.id === 3 ? "melanciaImg" : ''} src={getImageById(product.id)} alt={product.title} />
                 <div className="data-text-content">
-                    <h3>{formatPrice(data.price)}</h3>
-                    <p>{data.title}</p>
+                    <h3>{formatPrice(product.price)}</h3>
+                    <p>{product.title}</p>
                 </div>
             </div>
-            <AddToCartButton type="button" onClick={() => handleAddProduct(data.id)}>
+            <AddToCartButton type="button" onClick={() => handleAddProduct(product)}>
                 <div>
                     <MdAddShoppingCart />
-                    {quantityProduct}
+                    {cartItensAmount[product.id] || 0}
                 </div>
 
                 <span>ADICIONAR AO CARRINHO</span>
