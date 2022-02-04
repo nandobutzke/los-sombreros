@@ -28,7 +28,6 @@ export const StyledLink = styled(NavLink)`
     text-decoration: none;
     display: inline-block;
     position: relative;
-    //line-height: 5rem;
     
     &.active { 
         font-weight: bold;

@@ -3,6 +3,11 @@ import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { Product } from "../types";
 
+interface UpdateProductAmount {
+    productId: number;
+    amount: number
+}
+
 interface CartProviderProps {
     children: ReactNode;
 }
@@ -11,6 +16,7 @@ interface CartContextData {
     cart: Product[];
     addProduct: (productId: number) => Promise<void>;
     removeProduct: (productId: number) => Promise<void>;
+    updateProductAmount: ({productId, amount}: UpdateProductAmount) => Promise<void>;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -83,12 +89,38 @@ export function CartProvider({ children }: CartProviderProps) {
         localStorage.setItem('@LosSombreros:cart', JSON.stringify(cartFilter));
     }
 
-    async function updateProductAmount() {
+    async function updateProductAmount({ productId, amount }: UpdateProductAmount) {
+        try {
+            if (amount <= 0) {
+                return;
+            }
 
+            const stock = await api.get(`/stock/${productId}`);
+
+            const stockAmount = stock.data.amount;
+
+            if (amount > stockAmount) {
+                toast.error('Quantidade solicitada fora de estoque');
+                return;
+            }
+
+            const updatedCart = [...cart];
+            const productExists = updatedCart.find(product => product.id === productId);
+
+            if (productExists) {
+                productExists.amount = amount;
+                setCart(updatedCart);
+            } else {
+                throw Error();
+            }
+
+        } catch {
+            toast.error('Erro na alteração de quantidade do produto');
+        }
     }
 
     return (
-        <CartContext.Provider value={{ cart, addProduct, removeProduct }}>
+        <CartContext.Provider value={{ cart, addProduct, removeProduct, updateProductAmount }}>
             {children}
         </CartContext.Provider>
     );

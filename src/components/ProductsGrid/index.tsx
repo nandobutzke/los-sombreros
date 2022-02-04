@@ -4,7 +4,6 @@ import { Card } from "../Card";
 import { ProductsContainer, TitleProductsdGridContainer } from "./styles";
 import { Product } from '../../types';
 
-
 export function ProductsGrid() {
     const [products, setProducts] = useState<Product[]>([]);
 

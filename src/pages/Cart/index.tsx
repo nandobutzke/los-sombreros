@@ -1,19 +1,12 @@
 import { MdAddCircleOutline, MdDelete, MdRemoveCircleOutline } from "react-icons/md";
 import { localData } from "../../data";
 import { useCart } from "../../hooks/useCart";
+import { Product } from "../../types";
 import { formatPrice } from "../../util/format";
 import { Container, StyledTable, Total } from "./styles";
 
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    amount: number;
-}
-
 export function Cart() {
-    const { cart, removeProduct } = useCart();
+    const { cart, removeProduct, updateProductAmount } = useCart();
 
     const cartFormatted = cart.map(product => ({
         ...product,
@@ -22,11 +15,11 @@ export function Cart() {
     }));
 
     const total = 
-        formatPrice(
-            cart.reduce((sumTotal, product) => {
-                return sumTotal + product.price * product.amount;
-            }, 0)
-        );
+    formatPrice(
+        cart.reduce((sumTotal, product) => {
+            return sumTotal + product.price * product.amount;
+        }, 0)
+    );
 
     function getImageById(localDataItemId: number) {
         const response = localData.findIndex(localDataItem => localDataItem.id === localDataItemId);
@@ -34,7 +27,13 @@ export function Cart() {
         return localData[response].image;
     }
 
+    function handleProductIncrement(product: Product) {
+        updateProductAmount({ productId: product.id, amount: product.amount + 1 })
+    }
 
+    function handleProductDecrement(product: Product) {
+        updateProductAmount({ productId: product.id, amount: product.amount - 1 })
+    }
 
     return (
         <Container>
@@ -62,8 +61,8 @@ export function Cart() {
                                 <div>
                                     <button
                                         type="button"
-                                        disabled={true}
-                                        onClick={() => {}}
+                                        disabled={product.amount <= 1}
+                                        onClick={() => handleProductDecrement(product)}
                                     >
                                         <MdRemoveCircleOutline size={20} />
                                     </button>
@@ -74,7 +73,7 @@ export function Cart() {
                                     />
                                     <button
                                         type="button"
-                                        onClick={() => {}}
+                                        onClick={() => handleProductIncrement(product)}
                                     >
                                         <MdAddCircleOutline size={20} />
                                     </button>
@@ -97,7 +96,7 @@ export function Cart() {
 
                 <Total>
                     <span>TOTAL</span>
-                    <strong>{formatPrice(0)}</strong>
+                    <strong>{total}</strong>
                 </Total>
             </footer>
         </Container>

@@ -28,6 +28,8 @@ export function Card({ data }: ProductProps) {
         setQuantityProduct(quantityProduct + 1);
     }
 
+    
+
     return(
         <ProductContainer key={data.id}>
             <div className="card-content">
