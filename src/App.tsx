@@ -10,12 +10,14 @@ import { Footer } from './components/Footer';
 import { Cart } from './pages/Cart';
 import { CartProvider } from './hooks/useCart';
 import { ToastContainer } from 'react-toastify';
+import { ReactModal } from './components/ReactModal';
 
 function App() {
   return (
     <Router>
         <CartProvider>
             <GlobalStyles />
+            <ReactModal />
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
