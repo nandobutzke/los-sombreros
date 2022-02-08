@@ -1,15 +1,16 @@
 import { ButtonStyled } from "./styles";
-import { FaIceCream } from 'react-icons/fa'
+import { ReactNode } from "react";
 
 interface ButtonProps {
+    icon: ReactNode;
     title: string;
     color?: string;
 }
 
-export function Button({ title }: ButtonProps) {
+export function Button({ icon, title }: ButtonProps) {
     return(
         <ButtonStyled>
-            <FaIceCream />{title}
+            {icon}{title}
         </ButtonStyled>
     );
 }

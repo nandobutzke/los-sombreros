@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 export function ReactModal() {
     return (
         <Modal 
-            isOpen 
+            isOpen={false}
             className="react-modal-styles" 
         >
             <div>

@@ -11,6 +11,7 @@ import { Cart } from './pages/Cart';
 import { CartProvider } from './hooks/useCart';
 import { ToastContainer } from 'react-toastify';
 import { ReactModal } from './components/AddressModal';
+import { Payment } from './pages/Payment/Payment';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/payment" element={<Payment />} />
             </Routes>
             <ToastContainer autoClose={3000} />
             <Footer />

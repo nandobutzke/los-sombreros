@@ -5,6 +5,7 @@ export default createGlobalStyle`
     :root {
         --color-background: #fff;
         --color-default: #ff213f;
+        --color-default-green: #31ce47;
     }
 
     * {
