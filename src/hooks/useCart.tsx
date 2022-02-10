@@ -5,7 +5,7 @@ import { Product } from "../types";
 
 interface UpdateProductAmount {
     productId: number;
-    amount: number
+    amount: number;
 }
 
 interface CartProviderProps {
