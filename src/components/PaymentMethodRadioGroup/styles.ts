@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react';
-import { violet, blackA, red } from '@radix-ui/colors';
+import { violet, blackA } from '@radix-ui/colors';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 export const StyledRadio = styled(RadioGroupPrimitive.Item, {
@@ -13,34 +13,18 @@ export const StyledRadio = styled(RadioGroupPrimitive.Item, {
   '&:focus': { boxShadow: `0 0 0 2px black` },
 });
 
-export const StyledIndicator = styled(RadioGroupPrimitive.Indicator, {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '100%',
-  position: 'relative',
-  '&::after': {
-    content: '""',
-    display: 'block',
-    width: 11,
-    height: 11,
-    borderRadius: '50%',
-    backgroundColor: red.red3,
-  },
-});
-
-// Exports
 export const RadioGroup = RadioGroupPrimitive.Root;
 export const RadioGroupRadio = StyledRadio;
-export const RadioGroupIndicator = StyledIndicator;
 
-// Your app...
 export const Flex = styled('div', { display: 'flex' });
 
 export const Label = styled('label', {
+  display: 'flex',
+  alignItens: 'center',
+  justifyContent: 'center',
+  gap: 15,
   color: 'var(--color-default)',
-  fontSize: 15,
+  fontSize: 20,
   lineHeight: 1,
   userSelect: 'none',
   paddingLeft: 15,

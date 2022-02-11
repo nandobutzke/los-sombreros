@@ -14,14 +14,17 @@ interface CartProviderProps {
 
 interface CartContextData {
     cart: Product[];
+    totalPurchase: string;
     addProduct: (productId: number) => Promise<void>;
     removeProduct: (productId: number) => Promise<void>;
     updateProductAmount: ({productId, amount}: UpdateProductAmount) => Promise<void>;
+    calcTotalPurchase: (total: string) => Promise<void>;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
 
 export function CartProvider({ children }: CartProviderProps) {
+    const [ totalPurchase, setTotalPurchase ] = useState('');
     const [cart, setCart] = useState<Product[]>(() => {
         const storagedCart = localStorage.getItem('@LosSombreros:cart');
     
@@ -82,6 +85,10 @@ export function CartProvider({ children }: CartProviderProps) {
         }
     }
 
+    async function calcTotalPurchase(total: string) {
+        setTotalPurchase(total);
+    }
+
     async function removeProduct(productId: number) {
         const cartFilter = cart.filter(product => product.id !== productId);
 
@@ -120,7 +127,7 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     return (
-        <CartContext.Provider value={{ cart, addProduct, removeProduct, updateProductAmount }}>
+        <CartContext.Provider value={{ cart, totalPurchase, addProduct, removeProduct, updateProductAmount, calcTotalPurchase }}>
             {children}
         </CartContext.Provider>
     );

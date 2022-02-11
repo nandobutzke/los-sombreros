@@ -6,6 +6,7 @@ export default createGlobalStyle`
         --color-background: #fff;
         --color-default: #ff213f;
         --color-default-green: #31ce47;
+        --color-payment-default: #57C478;
     }
 
     * {

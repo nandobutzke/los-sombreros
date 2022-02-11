@@ -1,12 +1,13 @@
-import { MdAddCircleOutline, MdDelete, MdRemoveCircleOutline } from "react-icons/md";
+import { MdAddCircleOutline, MdDelete, MdOutlineShoppingBasket, MdRemoveCircleOutline } from "react-icons/md";
+import { Button } from "../../components/Button";
 import { localData } from "../../data";
 import { useCart } from "../../hooks/useCart";
 import { Product } from "../../types";
 import { formatPrice } from "../../util/format";
-import { Container, StyledTable, Total } from "./styles";
+import { Container, StyledFinalizingPurchaseLink, StyledTable, Total } from "./styles";
 
 export function Cart() {
-    const { cart, removeProduct, updateProductAmount } = useCart();
+    const { cart, removeProduct, updateProductAmount, calcTotalPurchase } = useCart();
 
     const cartFormatted = cart.map(product => ({
         ...product,
@@ -33,6 +34,10 @@ export function Cart() {
 
     function handleProductDecrement(product: Product) {
         updateProductAmount({ productId: product.id, amount: product.amount - 1 })
+    }
+
+    async function calculeTotalPurchase(total: string) {
+        await calcTotalPurchase(total);
     }
 
     return (
@@ -92,7 +97,14 @@ export function Cart() {
                 </tbody>
             </StyledTable>
             <footer>
-                <button type="button">Finalizar pedido</button>
+                <StyledFinalizingPurchaseLink to="/payment">
+                    <Button 
+                        type="button"
+                        title="Finalizar pedido"
+                        icon={<MdOutlineShoppingBasket />}
+                        onClick={() => calculeTotalPurchase(total)}
+                    />
+                </StyledFinalizingPurchaseLink>
 
                 <Total>
                     <span>TOTAL</span>

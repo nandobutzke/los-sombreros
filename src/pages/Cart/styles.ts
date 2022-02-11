@@ -1,4 +1,5 @@
 import { darken, lighten } from "polished";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -24,12 +25,6 @@ export const Container = styled.div`
             border-radius: 4px;
             font-size: 20px;
             font-weight: bold;
-    
-            transition: background 0.2s;
-    
-            &:hover {
-                background: ${darken(0.12, '#ff213f')};
-            }
         }
     }
 
@@ -103,11 +98,9 @@ export const StyledTable = styled.table`
             }
         }
     }
-
-
-
-    
 `;
+
+export const StyledFinalizingPurchaseLink = styled(Link)` text-decoration: none; `;
 
 export const Total = styled.div`
     display: flex;
