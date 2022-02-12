@@ -1,8 +1,9 @@
-import { styled } from '@stitches/react';
+import styled from 'styled-components';
+import { styled as styledStitches } from '@stitches/react';
 import { violet, blackA } from '@radix-ui/colors';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
-export const StyledRadio = styled(RadioGroupPrimitive.Item, {
+export const StyledRadio = styledStitches(RadioGroupPrimitive.Item, {
   all: 'unset',
   backgroundColor: 'white',
   width: 25,
@@ -16,9 +17,9 @@ export const StyledRadio = styled(RadioGroupPrimitive.Item, {
 export const RadioGroup = RadioGroupPrimitive.Root;
 export const RadioGroupRadio = StyledRadio;
 
-export const Flex = styled('div', { display: 'flex' });
+export const Flex = styledStitches('div', { display: 'flex' });
 
-export const Label = styled('label', {
+export const Label = styledStitches('label', {
   display: 'flex',
   alignItens: 'center',
   justifyContent: 'center',
@@ -29,3 +30,31 @@ export const Label = styled('label', {
   userSelect: 'none',
   paddingLeft: 15,
 });
+
+export const PaymentFooterContainer = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const PaymentMethodRadioGroupContainer = styled.div`
+  width: 100%;
+  margin: auto 4.5rem;
+
+  .total-footer-details {
+    display: block;
+
+    span {
+        color: #999;
+        font-weight: bold;
+    }
+
+    strong {
+        font-size: 28px;
+        margin-left: 5px;
+        color: black;
+    }
+  }
+
+`;
+
