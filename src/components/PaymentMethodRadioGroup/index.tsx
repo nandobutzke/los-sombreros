@@ -55,8 +55,12 @@ export function PaymentMethodRadioGroup() {
         </RadioGroup>
       </form>
       <PaymentFooterContainer>
-        <Flex css={{ margin: '50px 0', alignItems: 'center' }}>
-          <Button type="submit" title="Concluir pagamento" icon={<FaMoneyBill />} />
+        <Flex css={{ margin: '30px 0', alignItems: 'center' }}>
+          <Button 
+            type="submit" 
+            title="Concluir pagamento" 
+            icon={<FaMoneyBill />} 
+          />
         </Flex>
         <div className="total-footer-details">
           <span>TOTAL</span>

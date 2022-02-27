@@ -53,7 +53,7 @@ export function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {cartFormatted.length > 0 ? cart.map(product => (
+                    {cartFormatted.length > 0 ? cartFormatted.map(product => (
                         <tr>
                             <td>
                                 <img src={getImageById(product.id)} alt="" />
@@ -85,7 +85,7 @@ export function Cart() {
                                 </div>
                             </td>
                             <td>
-                                <strong>{}</strong>
+                                <strong>{product.subTotal}</strong>
                             </td>
                             <td>
                                 <button onClick={() => removeProduct(product.id)}>
