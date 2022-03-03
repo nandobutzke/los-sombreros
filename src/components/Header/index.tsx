@@ -1,4 +1,4 @@
-import { HeaderContainer, StyledLink } from "./styles";
+import { HeaderContainer } from "./styles";
 import logoImg from '../../assets/logo-los-sombreros.png';
 import { CartItem } from "../CartItem";
 import { ActiveLink } from "../ActiveLink";
